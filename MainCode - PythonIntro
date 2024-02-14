@@ -1,0 +1,35 @@
+#Attributes (Variables)
+hair_color = "Dirty Blond"
+eye_color = "Grey"
+name = "Mason" #String
+age = 15 #Integer
+height = 5.9 #Float
+hungry = True #Boolean
+hunger_level = 5 #If 5+ it will return hungry as true.
+hunger_enabled = True #Will let it print if enabled.
+create_line = "[===============================]"
+
+if hunger_level >= 5 and hunger_enabled == True: #If these criteria are met, set hungry to true
+    hungry = True
+elif hunger_level <=4 and hunger_enabled == True: #if these criteria are met, sets hungry to false
+    hungry = False
+    
+
+if hungry == True and hunger_enabled == True: #if hungry and hunger is on, print take hamburgers
+    print("Have 5 hamburgers")
+    
+elif hungry == False and hunger_enabled == True: #if not hungry and hunger is on, take this water
+    print("Here is some water")
+else:
+    print(hunger_enabled) #If neither of those are on, hunger is off.
+    
+#Data Types
+print(create_line)
+print("Classes Of Variables")
+print("----------------------")
+print("hair color: " + str(type(hair_color)) )
+print("eye color: " + str(type(eye_color)))
+print("name: " + str(type(name)))
+print("age: " + str(type(age)))
+print("Height: " + str(type(height)))
+print(create_line)
