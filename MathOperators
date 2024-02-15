@@ -1,0 +1,17 @@
+x = 4
+y = 10
+z = 3
+
+# sum_of_numbers = x+y+z
+# difference_of_numbers = x-y-z
+# 
+# print(sum_of_numbers , ":" , difference_of_numbers)
+# 
+# #using type() and / or // find out what happens when you go x/y or x//y.
+# 
+print(x//y) #// does floor division
+print(x/y) #/ Does division
+print(x*y)
+print(x+y)
+
+# Math operators - https://www.w3schools.com/python/python_operators.asp
