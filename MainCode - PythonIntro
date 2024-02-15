@@ -1,7 +1,7 @@
 #Attributes (Variables)
 hair_color = "Dirty Blond"
 eye_color = "Grey"
-name = "Mason" #String
+name = "Mason" #String / str
 age = 15 #Integer
 height = 5.9 #Float
 hungry = True #Boolean
