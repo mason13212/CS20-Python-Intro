@@ -1,0 +1,17 @@
+#Cube Volume
+Choose = input("What do you want to solve? Cube, Cylinder, LAST OPTION ")
+Choose2 = input("Do you want to solve Volume or Surface Area (Please type is as it it.) ")
+
+if Choose == "Cube": #If Selected Cube
+    if Choose2 == "Volume" or "V": #IF they pick volume
+        iptCV = int(input("What is the length of the cube? (INCHES) ")) #Asks for input
+        print("Volume Is:" , iptCV*iptCV*iptCV) #Does the math and outputs it
+
+    elif Choose2 == "Surface Area" or "SA": #If they chose surface area
+        iptCSA = int(input("I forgot the math for this........ Enter a random number...")) #Gets the number
+        print(iptCSA) #Outputs that number cuz i forgot the math
+        
+if Choose == "Cylinder": #IF they pick a cylinder
+    if Choose2 == "Volume" or "V": #If they pick volume
+        inptCylV = int(input("I forgot the math for this..... Enter a random number. 
+    
