@@ -1,0 +1,35 @@
+#Cube Volume
+Choose = input("What do you want to solve? Cube, Cylinder, Sphere ")
+Choose2 = input("Do you want to solve Volume or Surface Area (Please type is as it it.) ")
+
+Choose2 = Choose2.capitalize()
+Choose = Choose.capitalize()
+print(Choose)
+if Choose == "Cube": #If Selected Cube
+    print("Debug Cube Selected")
+    if Choose2 == "Volume" or Choose2 == "V": #IF they pick volum
+        iptCV = int(input("What is the length of the cube? (INCHES) ")) #Asks for input
+        print("Volume Is:" , iptCV*iptCV*iptCV) #Does the math and outputs it
+    elif Choose2 == "Surface area" or Choose2 == "Surface Area" or Choose2 == "Sa" or Choose2 == "SA": #If they chose surface area
+        iptCSA = int(input("Enter the length of the cube. (INCHES) ")) #Gets the number
+        print("Volume In Inches Is:" , inptCSA*inptCSA*6) #Outputs that number cuz i forgot the math
+        
+elif Choose == "Cylinder": #IF they pick a cylinder
+    print("Debug Cylinder Selected")
+    if Choose2 == "Volume" or Choose2 =="V": #If they pick volume
+        inptCylVR = int(input("Enter the Radius. (INCHES) ")) #Pi*R^2*H
+        inptCylVH = int(input("Enter the Height. (INCHES) "))
+        RS = inptCylVR*inptCylVR
+        print(3.14159 * RS * inptCylVH)
+    elif Choose2 == "Surface area" or Choose2 == "Surface Area" or Choose2 == "Sa" or Choose2 == "SA":
+        inptCylSaR = int(input("What is the Radius of the Cylinder? (INCHES)"))
+        inptCylSaH = int(input("What is the Height of the Cylinder? (INCHES)"))
+        PiS = 3.14159*2
+        RadS = inptCylSaR*inptCylSaR
+        FirstEquation = PiS*inptCylSaR*inptCylSaH
+        SecondEquation = PiS*RadS
+        print(FirstEquation + SecondEquation)
+    
+elif Choose == "Sphere":
+    if Choose2 == "Volume" or Choose2 =="V": #If they pick volume
+        
