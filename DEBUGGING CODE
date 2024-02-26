@@ -1,0 +1,20 @@
+#Cube Volume
+Choose = input("What do you want to solve? Cube, Cylinder, LAST OPTION ")
+Choose2 = input("Do you want to solve Volume or Surface Area (Please type is as it it.) ")
+print(Choose)
+if Choose == "Cube" or "cube": #If Selected Cube
+    if Choose == "Cube" or "cube" and Choose2 == "Volume" or "V" or "volume" or"v": #IF they pick volume
+        iptCV = int(input("What is the length of the cube? (INCHES) ")) #Asks for input --------------------------------------- BUGGED. If I enter "Cylinder" for Choose, it returns this before asking the correct questions
+        print("Volume Is:" , iptCV*iptCV*iptCV) #Does the math and outputs it
+
+    elif Choose == "Cube" or "cube" and Choose2 == "Surface Area" or "SA" or "surface area" or "sa": #If they chose surface area
+        iptCSA = int(input("Enter the length of the cube. (INCHES) ")) #Gets the number
+        print("Volume In Inches Is:" , inptCSA*inptCSA*6) #Outputs that number cuz i forgot the math
+        
+if Choose == "Cylinder" or "cylinder": #IF they pick a cylinder
+    if Choose == "Cylinder" or "cylinder" and Choose2 == "Volume" or "V" or "volume" or "v": #If they pick volume
+        inptCylVR = int(input("Enter the Radius. (INCHES) ")) #Pi*R^2*H
+        inptCylVH = int(input("Enter the Height. (INCHES) "))
+        RS = inptCylVR*inptCylVR
+        print(RS)
+    
