@@ -1,17 +1,62 @@
-#Cube Volume
-Choose = input("What do you want to solve? Cube, Cylinder, LAST OPTION ")
-Choose2 = input("Do you want to solve Volume or Surface Area (Please type is as it it.) ")
+#List for numbers stuff
+ObjectList = [
+    "1 - Cube",
+    "2 - Cylinder",
+    "3 - Sphere"
+    ]
+SolvingList = [
+    "1 - Surface Area",
+    "2 - Volume"
+    ]
 
-if Choose == "Cube": #If Selected Cube
-    if Choose2 == "Volume" or "V": #IF they pick volume
-        iptCV = int(input("What is the length of the cube? (INCHES) ")) #Asks for input
-        print("Volume Is:" , iptCV*iptCV*iptCV) #Does the math and outputs it
 
-    elif Choose2 == "Surface Area" or "SA": #If they chose surface area
-        iptCSA = int(input("I forgot the math for this........ Enter a random number...")) #Gets the number
-        print(iptCSA) #Outputs that number cuz i forgot the math
-        
-if Choose == "Cylinder": #IF they pick a cylinder
-    if Choose2 == "Volume" or "V": #If they pick volume
-        inptCylV = int(input("I forgot the math for this..... Enter a random number. 
+
+#Startup
+def Startup(): #Sends the objects
+    print("Welcome to the Shape Calculator!")
+    for x in ObjectList:
+        print(x)
     
+def Solving(): #Sends the List of Solvable Things
+    
+    print("Alright! You've selected " , ObjectChoice)
+    for x in SolvingList:
+        print(x)
+
+
+def SolveCube():
+    if SolvingChoice == 1: #If Surface Area
+        print("You Selected to solve a cubes surface area!")
+        Length = int(input("What is the length of your cube? "))
+        print("Your total is:" , Length*Length*6, Unit)
+        
+    elif SolvingChoice == 2: #If Volume
+        print("You Selected to solve a cubes volume!")
+        Lngth = int(input("What is the length of your cube? "))
+        print("Your total volume is:",Lngth*Lngth*Lngth, Unit)
+        
+def SolveCylinder():
+    if SolvingChoice == 1:
+        print("You selected to solve a Cylinders Surface Area!")
+        Radius = int(input("What is the radius of the Cylinder? "))
+        height = int(input("What is the Height of the Cylinder? "))
+        
+        PiS = 2*3.14
+        RadS = Radius*Radius
+        Math1 = PiS*Radius*height
+        Math2 = PiS*RadS
+        FinalMath = Math1 + Math2
+        print("Your Total Surface Area Is:",FinalMath,Unit)
+
+
+
+Startup()
+Unit = str(input("Please select what unit of measurement you are using! ")).upper()
+ObjectChoice = int(input("Please select the number with the corrosponding shape: "))
+Solving()
+SolvingChoice = int(input("Select the corrosponding number for what you would like to solve: "))
+
+if ObjectChoice == 1:
+    SolveCube()
+elif ObjectChoice == 2:
+    SolveCylinder()
