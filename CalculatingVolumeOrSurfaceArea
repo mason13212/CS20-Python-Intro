@@ -1,13 +1,11 @@
 #https://th.bing.com/th/id/R.dd4128123eee7730e25becb990e0e05e?rik=%2fn4uaSEtO2P0cw&pid=ImgRaw&r=0
-while True:
-    print("YOU NEED TO WORK ON CYLINDER VOLUME!")
-
 
 #List for numbers stuff
 ObjectList = [
     "1 - Cube",
     "2 - Cylinder",
-    "3 - Sphere"
+    "3 - Sphere",
+    "10 - EXIT"
     ]
 
 SolvingList = [
@@ -20,7 +18,8 @@ SolvingList = [
 #Startup
 def Startup(): #Sends the objects
     print("Welcome to the Shape Calculator!")
-    for x in ObjectList:
+def AskNumbers1():
+   for x in ObjectList:
         print(x)
     
 def Solving(): #Sends the List of Solvable Things
@@ -34,35 +33,104 @@ def SolveCube():
     if SolvingChoice == 1: #If Surface Area
         print("You Selected to solve a cubes surface area!")
         Length = int(input("What is the length of your cube? "))
-        print("Your total is:" , Length*Length*6, Unit)
+        print("Your total is:" , Length*Length*6, Unit, "SQUARED")
         
     elif SolvingChoice == 2: #If Volume
         print("You Selected to solve a cubes volume!")
-        Lngth = int(input("What is the length of your cube? "))
-        print("Your total volume is:",Lngth*Lngth*Lngth, Unit)
+        Lngth = float(input("What is the length of your cube? "))
+        print("Your total volume is:",Lngth*Lngth*Lngth, Unit, "CUBED")
+    else:
+        print("Invalid Solving Option")
         
 def SolveCylinder():
     if SolvingChoice == 1:
         print("You selected to solve a Cylinders Surface Area!")
-        Radius = int(input("What is the radius of the Cylinder? "))
-        height = int(input("What is the Height of the Cylinder? "))
+        Radius = float(input("What is the radius of the Cylinder? "))
+        height = float(input("What is the Height of the Cylinder? "))
         
         PiS = 2*3.14
         RadS = Radius*Radius
         Math1 = PiS*Radius*height
         Math2 = PiS*RadS
         FinalMath = Math1 + Math2
-        print("Your Total Surface Area Is:",FinalMath,Unit)
+        print("Your Total Surface Area Is:",FinalMath,Unit,"SQUARED")
+        
+    elif SolvingChoice == 2:
+        print("You selected to solve a Cylinders Volume!")
+        Radius = float(input("What is the radius of the Cylinder? "))
+        Height = float(input("What is the Height of the Cylinder? "))
+        RadiusS = Radius*Radius
+        Total = 3.14*RadiusS*Height
+        print("Your Total Volume is:" , Total, Unit, "CUBED")
+    else:
+        print("Invalid Solving Option")
 
+def SolveSphere():
+    if SolvingChoice == 1:
+         print("You're Stupid... I mean you chose to solve a Sphere's Surface Area")
+         Radius = float(input("What is the Radius of your Sphere?" ))
+         Pi4 = 3.14*4
+         RadS = Radius*Radius
+         TotalMath = Pi4*RadS
+         print("Thanks for making me want to quit living.")
+         print("Your Total is:" , TotalMath, Unit, "SQUARED")
+         
+    elif SolvingChoice == 2:
+        print("You chose to solve a Spheres Volume!")
+        radius = float(input("What is the Radius of your sphere? "))
+        
+        RadiusC = radius*radius*radius
+        Math1 = 4/3
+        Math2 = Math1 * 3.14
+        Math3 = Math2*RadiusC
+        print("Your Total Is:", Math3, Unit, "CUBED")
+    else:
+        print("Invalid Solving Option")
 
-
-Startup()
 Unit = str(input("Please select what unit of measurement you are using! ")).upper()
-ObjectChoice = int(input("Please select the number with the corrosponding shape: "))
-Solving()
-SolvingChoice = int(input("Select the corrosponding number for what you would like to solve: "))
+Startup()
+while True:
+    AskNumbers1()
+    ObjectChoice = int(input("Please select the number with the corrosponding shape: "))
+    Solving()
+    SolvingChoice = int(input("Select the corrosponding number for what you would like to solve: "))
 
-if ObjectChoice == 1:
-    SolveCube()
-elif ObjectChoice == 2:
-    SolveCylinder()
+    if ObjectChoice == 1:
+        SolveCube()
+    elif ObjectChoice == 2:
+        SolveCylinder()
+    elif ObjectChoice == 3:
+        SolveSphere()
+    elif ObjectChoice == 10:
+        print("G")
+        print("o")
+        print("o")
+        print("d")
+        print("b")
+        print("y")
+        print("e")
+        print("G")
+        print("GO")
+        print("GOO")
+        print("GOOD")
+        print("GOODB")
+        print("GOODBY")
+        print("GOODBYE")
+        print("GOODBYE.")
+        print("GOODBYE..")
+        print("GOODBYE...")
+        print("GOODBYE..")
+        print("GOODBYE.")
+        print("GOODBYE")
+        print("GOODBY")
+        print("GOODB")
+        print("GOOD")
+        print("GOO")
+        print("GO")
+        print("G")
+        print(" ")
+        print("Thank you for using me! I get used a lot... Goodbye my friend!")
+        break
+    else:
+        print("NO VALID OPTION DETECTED. ENDING!")
+        break
