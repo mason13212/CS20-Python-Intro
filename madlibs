@@ -1,0 +1,23 @@
+#All notes are placed under the line to avoid having to scroll back and forth.
+
+import easygui as e
+#Simply imports EasyGui as E to make coding easier
+
+questions = ["Please say an adjective ","Please say a verb (PAST TENSE) ", "Please say a adverb ","Please say an adjective ","Please say a noun ","Please say a noun ","Please say an adjective ","Please say a verb ","Please say an adverb ","Please say a verb (past tense) ","Please say an adjective "]
+#List of questions to ask to make the madlib.
+answers = []
+#List of answers given, starts empty, appends the answers to keep them in the correct format.
+for x in questions:
+    answer = e.enterbox(x,"MADLIBS!")
+    answers.append(answer)
+    #For loop, asks for the adjective etc and then appends it to the answers list for the madlib
+
+finalanswer = f"Today I went to the zoo. I saw a(n) {(answers[0])} {(answers[1])} jumping up and down in its tree. He {(answers[2])} {(answers[3])} through the large tunnel that led to its {(answers[4])}. I got some peanuts and passed them through the cage to a gigantic gray {(answers[5])} towering above my head. Feeding that animal made me hungry. I went to get a {(answers[6])} scoop of ice cream. It filled my stomach. Afterwards I had to {(answers[7])} {(answers[8])} to catch the bus. When I got home I {(answers[9])} my mom for a {(answers[10])} day at the zoo."
+#The final answer in f string format. Put it in here so I could see it easier for the next line as I couldnt get it to work correctly.
+e.msgbox(finalanswer, "Finished Madlibs!")
+#Sends out a msgbox with the finished madlib.
+'''
+Delete the # to print it for easier viewing.
+
+print(finalanswer)
+'''
