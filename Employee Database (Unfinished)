@@ -1,0 +1,52 @@
+###########################
+#Employee Dictionary
+#Name: Mason
+#Date: April 27th, 2024 
+#Task: Complete functions with the provided info
+###########################
+
+info = ["What is their Name?","What is their Job?","What is their Start Date?"]
+positions = ["CCHS", "SMVS", "GDCS"]
+jobs = ["Principal","Vice-Principal","Teacher","Administrative Assistant","Attendance Coordinator","Not Listed"]
+global_dic = {}
+import easygui as e
+
+#Create a LIST of EMPLOYEES (which are dictionaries), start with the following data:
+#{"name":"Slater":"job":"teacher","location": "CCHS","start_date": 2018}
+
+def add_person():
+    local_dic = {}
+    name = e.enterbox(info[0],"Employee Database")
+    job = e.choicebox("What is their Job?", "Employee Database", jobs)
+    loc = e.choicebox("What is their Location?", "Employee Database", positions)
+    start_date = e.enterbox(info[2],"Employee Database")
+    #Get job info: name,job,location,start_date
+    local_dic = dict(name = name, job = job, location = loc, start_date = start_date)
+    global_dic[name] = dict(local_dic)
+    local_dic.clear()
+    #Create local dictionary
+    #Add to global
+    
+def print_employees():
+    #Print all NAMES from global dictionary
+    for x in global_dic:
+        print(x)
+
+def print_job_location_pairs():
+    for x, obj in global_dic.items():
+        for y in obj:
+            if obj[y] != "job" or "location":
+                print(y)
+
+        
+'''   
+def print_possible_raise():
+    #If employee started prior to 2020,
+    #eligible for a raise, print out data
+    #for individual
+'''
+
+add_person()
+add_person()
+add_person()
+print_job_location_pairs()
