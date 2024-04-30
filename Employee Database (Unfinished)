@@ -33,10 +33,7 @@ def print_employees():
         print(x)
 
 def print_job_location_pairs():
-    for x, obj in global_dic.items():
-        for y in obj:
-            if obj[y] != "job" or "location":
-                print(y)
+    
 
         
 '''   
