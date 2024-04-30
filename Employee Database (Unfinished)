@@ -33,7 +33,8 @@ def print_employees():
         print(x)
 
 def print_job_location_pairs():
-    
+    for person, details in global_dic.items():
+        print(f"{person}: {details['job']} at {details['location']}")
 
         
 '''   
