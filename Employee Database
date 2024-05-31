@@ -19,7 +19,7 @@ def add_person():
     name = e.enterbox(info[0],"Employee Database")
     job = e.choicebox("What is their Job?", "Employee Database", jobs)
     loc = e.choicebox("What is their Location?", "Employee Database", positions)
-    start_date = e.enterbox(info[2],"Employee Database")
+    start_date = e.integerbox(info[2],"Employee Database", upperbound=1000000)
     #Get job info: name,job,location,start_date
     local_dic = dict(name = name, job = job, location = loc, start_date = start_date)
     global_dic[name] = dict(local_dic)
@@ -37,14 +37,18 @@ def print_job_location_pairs():
         print(f"{person}: {details['job']} at {details['location']}")
 
         
-'''   
+  
 def print_possible_raise():
+    for person, details in global_dic.items():
+        if details['start_date'] <= 2020:
+            print(f"{person} is eligible for a raise.")
     #If employee started prior to 2020,
     #eligible for a raise, print out data
     #for individual
-'''
 
 add_person()
 add_person()
 add_person()
+print_employees()
 print_job_location_pairs()
+print_possible_raise()
