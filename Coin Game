@@ -1,0 +1,321 @@
+##############
+#Turtle - Collect It Game
+#
+#Name Mason Cockle
+#
+#Task: To create a simple game where the player controls a turtle that can move left and right while trying to collect falling items.
+##############
+
+#Import Libraries
+import turtle as t
+import time as ti
+import random as r
+
+#####Setup#####
+ht()
+speed(2)
+penup()
+left(90)
+t.Screen().bgcolor("white")
+                 ################################################
+                 #                                              #
+                 #   Use this section to organize global data   #
+                 #                                              #
+                 ################################################
+
+#Import Libraries
+import turtle as t
+
+#Global Variable
+lives = 5 #Amount of lives you have at start
+points = 0 #amount of points to start with, global var for tracking
+amountofcollects = 1 #number of collectables
+shape = "square" #Shape Of Collectable you want
+sc = t.Screen()
+#Lists
+
+collectables = [ #List of Collectables
+    
+]
+
+#####Functions#####
+
+    #MAKES A WHITE SQUARE (2 functions, 1 for score and 1 for lives.)
+########################################################################
+def white_square_score():
+    #Makes a white square to block out the old score text()
+    speed(0)
+    goto(-190,165)
+    left(0)
+    color("white")
+    begin_fill()
+    for i in range(1):
+        forward(50)
+        right(90)
+        forward(150)
+        right(90)
+        forward(50)
+    end_fill()
+    speed(2)
+    seth(90)
+    goto(0,-190)
+    color("black")
+
+#completed
+def white_square_lives():
+    #Makes a white square to block out the old lives text()
+    speed(0)  
+    goto(80,160)
+    left(0)
+    color("white")
+    begin_fill()
+    for i in range(1):
+        forward(50)
+        right(90)
+        forward(150)
+        right(90)
+        forward(50)
+    end_fill()
+    speed(2)
+    seth(90)
+    goto(0,-190)
+    color("black")
+########################################################################
+
+##Core Game Functions##
+########################################################################
+def setup_score():
+    #Create Score
+    #Create the score field on the top of the screen
+    white_square_score()
+    global points
+    goto(-185,175)
+    write("Score: " + str(points), font=("Fantasy", 20), align="left")
+    goto(0,-190)
+
+def setup_lives():
+    #Sets Up The Lives for The Game.
+    global lives
+    goto(185,175)
+    write("Lives: " + str(lives), font=("Fantasy", 20), align="right")
+    goto(0,-190)
+
+def create_player():
+    #Create Player
+    #Create and draw player onto the screen in starting position
+    plr.penup()
+    plr.shape('turtle')
+    plr.goto(-180,-170)
+    plr.color('red')
+    plr.seth(90)
+    
+def move_left():
+    #Move Player Left
+    #Move player left in response to arrow key
+    plr.seth(180)
+    plr.forward(20)
+    plr.seth(90)
+    pos = int(plr.position()[0])
+    if pos >= 190:
+        plr.setx(180)
+    elif pos <= -190:
+        plr.setx(-180)
+
+def move_right():
+    #Move Player Right
+    #Move player right in response to arrow key
+    plr.seth(360)
+    plr.forward(20)
+    plr.seth(90)
+    pos = int(plr.position()[0])
+    if pos >= 190:
+        plr.setx(180)
+    elif pos <= -190:
+        plr.setx(-180)
+
+def positionlist():
+    print(plr.pos())
+
+def create_collectables():
+    #Create Collectable
+    #Use a for loop to create and store your collectables into a list
+    amount = 0
+    frwdamt = -5
+    count = 0
+    global amountofcollects
+    global shape
+    while count < amountofcollects:
+        amount = amount+1
+        count = count + 1
+        collectable = t.Turtle()
+        collectable.penup()
+        collectable.color("blue")
+        collectable.shape(shape)
+        collectable.seth(360)
+        collectable.setpos(-175,220)
+        # Debugging - collectable.setpos(-175,0)
+        collectable.seth(90)
+        collectable.forward(r.randint(0,50))
+        collectable.seth(360)
+        collectable.forward(frwdamt)
+        frwdamt = frwdamt+40
+        collectable.seth(270)
+        collectables.append(collectable)
+
+def move_collectable():
+    #Move Collectable 
+    #Go through your list of collectables and move each item    
+    for i in collectables:
+        vcor = int(i.position()[1])
+        i.forward(((r.randint(5, 40))))
+        for x in collectables:
+            ycor = int(x.position()[1])
+            if vcor == ycor:
+                i.backward(100)
+        pos2 = int(i.position()[1])
+        if pos2 <= -180 and pos2 <= -160:
+            print("-=-=-=-=-=-=-=-=-=-=- CHECKING COLLECTABLE -=-=-=-=-=-=-=-=-=-=-")
+            item = i
+            check_collectable(item)
+            #update_score(points)
+
+def check_collectable(item):
+    #Check Player Catch Collectable
+    #Pass in a collectable item from a list and determine if it is in contact/proximity with the player
+    #Must pass the item in as an arguement
+    print(item)
+    xcor = int(item.position()[0])
+    ycor = int(item.position()[1])
+    pcor = int(plr.position()[0])
+    ProximityAbove = xcor + 10
+    ProximityBelow = xcor - 10
+    position = pcor
+    itemcor = int(item.position()[1])
+    if position >= ProximityBelow and position <= ProximityAbove:
+        print("position:" + str(position))
+        print("ProximityBelow: " + str(ProximityBelow))
+        print("ProximityAbove: " + str(ProximityAbove))
+        update_score()
+        print(points)
+        item.goto(xcor, 220)
+        print("scored")
+    elif ycor <= -200:
+        item.goto(xcor, 220)
+        update_lives()
+    
+def update_score():
+    global points
+    points = points+2
+    white_square_score()
+    goto(-185,175)
+    write("Score: " + str(points), font=("Fantasy", 20), align="left")
+    goto(0,-190)
+ 
+def update_lives():
+    global lives
+    white_square_lives()
+    lives = lives-1
+    goto(185,175)
+    write("Lives: " + str(lives), font=("Fantasy", 20), align="right")
+    goto(0,-190)  
+
+########################################################################
+
+##Extendable Functions##
+
+########################################################################
+#Game Start Screen
+def start_screen():
+    speed(2)
+    goto(0,0)
+    write("Welcome To Turtle Collect!", font=("Fantasy", 20), align="center")
+    goto(0,-30)
+    write("GOOD LUCK!", font=("Fantasy", 20), align="center")
+    color("white")
+    backward(100)
+    turtle.delay(100)
+    forward(90)
+    turtle.delay(0)
+    left(90)
+    forward(180) #180 is half, 360 for all
+    right(90)
+    forward(75)
+    speed(0)
+    begin_fill()
+    right(90)
+    forward(360)
+    right(90)
+    forward(75)
+    right(90)
+    forward(360)
+    end_fill()
+    speed(2)
+    color("black")
+    seth(90)
+    goto(0,-190)
+
+#Game Over Screen
+def game_over():
+    speed(2)
+    goto(0,0)
+    write("YOU LOST!", font=("Fantasy", 20), align="center")
+    goto(0,-30)
+    write("Exiting Game Now", font=("Fantasy", 20), align="center")
+    color("white")
+    backward(100)
+    turtle.delay(100)
+    forward(90)
+    turtle.delay(0)
+    left(90)
+    forward(180) #180 is half, 360 for all
+    right(90)
+    forward(75)
+    speed(0)
+    begin_fill()
+    right(90)
+    forward(360)
+    right(90)
+    forward(75)
+    right(90)
+    forward(360)
+    end_fill()
+    speed(2)
+    color("black")
+    seth(90)
+    goto(0,-190)
+
+
+#####Setup Function Calls#####
+#Use this section to call any core functions that are only called once and help to setup the turtle/game environment
+
+###############
+start_screen()#                             S T A R T
+####################                       S C R E E N
+setup_score()      #
+setup_lives()      #
+plr = t.Turtle()   #                         M A I N
+create_player()    #                        S E T U P
+################################
+sc.listen()                    #
+sc.onkey(move_left, "Left")    #
+sc.onkey(move_right, "Right")  #            S E T U P
+sc.onkey(positionlist, "Up")   #         K E Y B I N D S
+plr.mainloop()                 #
+################################
+create_collectables()#                    C R E A T E
+######################              C O L L E C T A B L E S
+
+
+#####Core Game Loop#####
+#Use this while loop to create your
+#game loop, define logic and call 
+#above functions
+
+
+while True:
+    ti.sleep(.5)
+    move_collectable()
+    if lives <= 0:
+        game_over()
+        break
+    
